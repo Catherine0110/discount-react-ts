@@ -1,0 +1,32 @@
+:root {
+    --green: #22A957;
+    --green-hover: #79CC99;
+    --green-light: #65FFAD;
+    --black: #363636;
+    --border-line: #C2C0C1;
+    --gray-dark: #263238;
+    --blue: #79AECC;
+    --white: #ffffff;
+    --gradient-green: linear-gradient(3deg, #139043 2.78%, #23AB58 97.22%);
+    --gradient-green-active: linear-gradient(3deg, #0E622F 2.78%, #20A855 97.22%);
+    --gradient-blue: linear-gradient(3deg, #6598B5 2.78%, #79AECC 97.22%);
+    --gradient-blue-active: linear-gradient(3deg, #305569 2.78%, #6BA8CB 97.22%); 
+    --gradient-white: linear-gradient(180deg, #FFF 14.7%, rgba(217, 217, 217, 0.00) 100.81%);   
+
+    --font-family-main: 'Open Sans',"Times New Roman", sans-serif;    
+    --font-family-title: 'Literata',"Times New Roman", sans-serif;    
+    --font-size-xxs: 17px;
+    --font-size-xs: 18px;
+    --font-size-s: 26px;
+    --font-size-m: 36px;
+    --font-size-l: 43px;
+    --font-size-xl: 72px;
+    --font-line: 100%;
+    --font-line-l: 133.333%;
+    --font-line-m: 120.93%; 
+    --font-weight-xl: 800;
+    --font-weight-l: 700;
+    --font-weight-m: 600;
+
+    --container-width: 1278px;  
+}

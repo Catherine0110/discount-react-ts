@@ -1,0 +1,16 @@
+@import "reset";
+@import "fonts";
+@import "variables";
+@import "global";
+
+
+
+body {
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-l);
+    font-family: var(--font-family-main);
+    color: var(--black);
+}
+
+
+

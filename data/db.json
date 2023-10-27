@@ -1,0 +1,37 @@
+{
+    "discount": {
+        "title": "Find The Most <span class='discount__title title_line'> Effective Gutter Solution</span> For YOU",
+         "cards": [
+        { 
+            "id": "1",
+            "title": "GET your gutter at a DISCOUNT",
+            "subtitle": "Discount for seniors and military",
+            "text": "Get an extra <span class='card__text card__text--green'>FREE</span> gutter cleaning!",
+            "discount": "50",
+            "img": "product-one.png",
+            "mark": "usa.png",
+            "disabled": false
+        },
+        { 
+            "id": "2",
+            "title": "GET your gutter at a DISCOUNT",
+            "subtitle": "Discount for seniors",
+            "text": "Sorry, the discount is unavailable",
+            "discount": "30",
+            "img": "product-two.png",
+            "mark": "usa.png",
+            "disabled": true
+        },
+        { 
+            "id": "3",
+            "title": "GET your gutter at a DISCOUNT",
+            "subtitle": "Special offer for everyone",
+            "text": "Get an extra <span class='card__text card__text--green'>FREE</span> gutter cleaning!",
+            "discount": "10",
+            "img": "product-three.png",
+            "mark": "usa.png",
+            "disabled": false,
+            "selected": true
+        }
+    ]}
+  }

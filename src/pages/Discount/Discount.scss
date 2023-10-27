@@ -1,0 +1,54 @@
+@import "../../styles/variables.scss";
+
+.discount {
+    background-image: url('../../assets/images/bg.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    position: relative;
+
+    @media (min-width: $mobile) {
+        padding-bottom: 72px;
+        padding-top: 100px;
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        background-image: var(--gradient-white);
+        background-repeat: no-repeat;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    &__loading,
+    &__err {
+        font-size: var(--font-size-l);
+        position: relative;
+        z-index: 2;
+    }
+
+    &_load,
+    &_error {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    &__title {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        margin-bottom: 30px;
+
+        @media (min-width: $mobile) {
+            margin-bottom: 72px;
+        }
+    }
+}
