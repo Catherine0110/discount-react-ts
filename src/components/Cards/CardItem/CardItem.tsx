@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { classNames } from '../../../utils/ClassNames'
 
 import './CardItem.scss'
@@ -32,8 +32,12 @@ const CardItem = (props: CardItemProps) => {
   const [disabled, setDisabled] = useState(card.disabled)
   const [hovered, setHovered] = useState(false)
   const selectedCard = selected === card.id
-  const clickHandler = () => {
-    !disabled && setSelected(card.id)
+  const subTitleRef = useRef(null) as React.RefObject<HTMLSpanElement>
+  let [subtitleTextHeight, setSubtitleTextHeight] = useState<number>()
+
+  const clickHandler = (event: React.FormEvent<HTMLInputElement>) => {
+    const input = event.target as HTMLInputElement
+    !disabled && setSelected(`${input.id}`)
     if (selectedCard) {
       setSelected('')
       setHovered(false)
@@ -42,9 +46,13 @@ const CardItem = (props: CardItemProps) => {
 
   return (
     <div className="card">
-      <div
-        onClick={clickHandler}
-        onMouseEnter={() => !disabled && !!selectedCard && setHovered(true)}
+      <label
+        onMouseEnter={() => {
+          if (!disabled && !!selectedCard) {
+            setSubtitleTextHeight(subTitleRef.current?.offsetHeight)
+            setHovered(true)
+          }
+        }}
         onMouseLeave={() => !disabled && !!selectedCard && setHovered(false)}
         className={classNames(
           'card__inner',
@@ -54,21 +62,44 @@ const CardItem = (props: CardItemProps) => {
           },
           [className!],
         )}>
+        <input
+          hidden
+          type="radio"
+          name="discount-radio"
+          value={card.discount}
+          id={card.id}
+          disabled={card.disabled}
+          onChange={clickHandler}
+          checked={selectedCard}
+        />
         <img src={card.mark} className="card__mark" alt="" />
-        <div className="card__content">
-          <div className="card__head">
-            <h4 className="card__title">{card.title}</h4>
-            <p className="card__subtitle">
-              {hovered ? 'Excellent decision!' : card.subtitle}
-            </p>
-            <div className="card__discount">
+        <span className="card__content">
+          <span className="card__head">
+            <span className="card__title">{card.title}</span>
+            <span className="card__subtitle">
+              {!hovered && (
+                <span ref={subTitleRef} className="card__subtitleText">
+                  {card.subtitle}
+                </span>
+              )}
+              {hovered && (
+                <span
+                  style={{
+                    height: `${subtitleTextHeight}px`,
+                  }}
+                  className="card__subtitle card__subtitle_hovered">
+                  Excellent decision!
+                </span>
+              )}
+            </span>
+            <span className="card__discount">
               <span className="card__rate">{card.discount}</span>
               <span>%OFF</span>
-            </div>
-          </div>
+            </span>
+          </span>
           <img src={card.img} alt="" className="card__img" />
-        </div>
-      </div>
+        </span>
+      </label>
       <p
         className="card__text"
         dangerouslySetInnerHTML={{

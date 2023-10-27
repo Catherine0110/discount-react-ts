@@ -13,7 +13,7 @@ const CardsWrap = memo((props: CardsProps) => {
   const { cards, selected, setSelected } = props
 
   return (
-    <div className="cards">
+    <form className="cards">
       {cards.map((card) => (
         <CardItem
           selected={selected}
@@ -22,7 +22,7 @@ const CardsWrap = memo((props: CardsProps) => {
           card={card}
         />
       ))}
-    </div>
+    </form>
   )
 })
 
