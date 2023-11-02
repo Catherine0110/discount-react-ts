@@ -37,10 +37,12 @@ const CardItem = (props: CardItemProps) => {
 
   const clickHandler = (event: React.FormEvent<HTMLInputElement>) => {
     const input = event.target as HTMLInputElement
-    !disabled && setSelected(`${input.id}`)
-    if (selectedCard) {
-      setSelected('')
-      setHovered(false)
+    setSelected(`${input.id}`)
+  }
+
+  const hoveredandler = (hovered: boolean) => {
+    if (!disabled && !!selectedCard) {
+      setHovered(hovered)
     }
   }
 
@@ -48,12 +50,12 @@ const CardItem = (props: CardItemProps) => {
     <div className="card">
       <label
         onMouseEnter={() => {
-          if (!disabled && !!selectedCard) {
+          !disabled &&
+            !!selectedCard &&
             setSubtitleTextHeight(subTitleRef.current?.offsetHeight)
-            setHovered(true)
-          }
+          hoveredandler(true)
         }}
-        onMouseLeave={() => !disabled && !!selectedCard && setHovered(false)}
+        onMouseLeave={() => hoveredandler(false)}
         className={classNames(
           'card__inner',
           {
@@ -97,7 +99,12 @@ const CardItem = (props: CardItemProps) => {
               <span>%OFF</span>
             </span>
           </span>
-          <img src={card.img} alt="" className="card__img" />
+          <img
+            loading="lazy"
+            src={card.img}
+            alt={card.subtitle}
+            className="card__img"
+          />
         </span>
       </label>
       <p
